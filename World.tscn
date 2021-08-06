@@ -1,24 +1,26 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PointedTree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://RockOne.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GrassTuftLarge.tscn" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.00069, 1, 1.0049 )
 
 [sub_resource type="CubeMesh" id=2]
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=3]
 flags = 23
 load_path = "res://.import/grass.jpeg-53df670249bf45c1da034f0c176c6f2d.s3tc.stex"
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 flags_world_triplanar = true
 params_diffuse_mode = 4
 params_specular_mode = 3
 albedo_color = Color( 0.0784314, 0.631373, 0.0470588, 1 )
-albedo_texture = SubResource( 4 )
+albedo_texture = SubResource( 3 )
 uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_triplanar = true
 
@@ -39,10 +41,19 @@ shape = SubResource( 1 )
 [node name="FloorTexture" type="MeshInstance" parent="BasePlate/FloorCollider"]
 transform = Transform( 1.00883, 0, 0, 0, 1, 0, 0, 0, 1, 0.00117566, 0.000152588, -0.00077333 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -1.37362, -7.74605 )
+
+[node name="Tree2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.22326, -1.37362, -4.995 )
+
+[node name="Tree3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.53157, -1.37362, 0.322664 )
+
+[node name="Tree4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -9.14577, -1.37362, -5.05057 )
 
 [node name="PointedTree" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 2.40035, -1.32235, 0 )
@@ -58,3 +69,39 @@ transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 2.59394, -1.32235, -5
 
 [node name="PointedTree2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 8.34483, -1.32235, -3.45847 )
+
+[node name="Rock" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00537, -1.36677, 0 )
+
+[node name="Rock2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47903, -1.36677, -5.41179 )
+
+[node name="Rock3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.17394, -1.36677, -4.36448 )
+
+[node name="Rock4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1845, -1.36677, -5.45161 )
+
+[node name="Rock5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12183, -1.36677, -10.09 )
+
+[node name="Rock6" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32413, -1.36677, 1.49414 )
+
+[node name="Rock7" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.64724, -1.36677, -1.45732 )
+
+[node name="GrassTuftLarge" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17398, -1.27096, 0.699028 )
+
+[node name="GrassTuftLarge2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.83687, -1.27096, 0.393993 )
+
+[node name="GrassTuftLarge3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36807, -1.27096, -0.0345776 )
+
+[node name="GrassTuftLarge4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47863, -1.27096, -0.205192 )
+
+[node name="GrassTuftLarge5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98574, -1.27096, -4.12746 )

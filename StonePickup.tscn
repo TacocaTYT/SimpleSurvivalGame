@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/randomassets/objectImportStuff/Stone.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 1.32202
+
+[sub_resource type="CylinderShape" id=4]
+
+[sub_resource type="Animation" id=3]
+resource_name = "SpinningPickup"
+length = 4.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("stone:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.9, 2.9, 4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("stone:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -180, -0.25, 0, 0.25, 0, -90, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0, 179, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.9, 2.9, 4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("stone:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 1.9, 2.9, 4 )
+}
+
+[node name="StonePickup" type="RigidBody"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.00100875, 0.518874, -0.00220826 )
+collision_layer = 2
+collision_mask = 2
+mass = 1.62449
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="stone" type="Area" parent="."]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="stone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0194842 )
+shape = SubResource( 1 )
+
+[node name="Spatial" type="Spatial" parent="stone/CollisionShape"]
+transform = Transform( 0.999999, 0, -1.86253e-09, 0, 1, 0, 1.86253e-09, 0, 0.999999, 0.202498, 0, 0.111627 )
+
+[node name="MeshInstance" type="MeshInstance" parent="stone/CollisionShape/Spatial"]
+transform = Transform( 1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 6.07482, 0, -5.41831 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="stone/CollisionShape/Spatial"]
+transform = Transform( 1, 8.88178e-16, 0, 0, 0.993099, -0.117277, -4.26326e-14, 0.117277, 0.993099, 6.0307, 0.508229, -4.65816 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="stone/CollisionShape/Spatial"]
+transform = Transform( -0.961135, -0.252335, 0.112009, -0.264614, 0.957699, -0.113097, -0.0787324, -0.13834, -0.98725, -7.16471, -0.99668, 4.31332 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="stone/CollisionShape/Spatial"]
+transform = Transform( 0.975006, -2.33083e-08, 0.222178, -0.0592362, 0.963802, 0.259952, -0.214136, -0.266616, 0.939713, 4.58128, -1.27775, -6.04036 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.415, 0, 0, 0, 1, 0, -1.27861, 0 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SpinningPickup = SubResource( 3 )

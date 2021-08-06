@@ -13,6 +13,13 @@ const MAX_SLOPE_ANGLE = 40
 
 var camera
 var rotation_helper
+var interactionPoint
+var current_item
+var UI_crosshair_off
+var UI_crosshair_on
+var Inv
+
+var craftWaiter = 0
 
 var MOUSE_SENSITIVITY = 0.1
 
@@ -20,13 +27,27 @@ func _ready():
 	camera = $Rotation_Helper/Camera
 	rotation_helper = $Rotation_Helper
 	#anim = $AnimationPlayer
-
+	interactionPoint = $Rotation_Helper/Camera/RayCast
+	UI_crosshair_off = $Rotation_Helper/Camera/UI/CrosshairOff
+	UI_crosshair_on = $Rotation_Helper/Camera/UI/CrosshairOn
+	Inv = $Rotation_Helper/Camera/Inventory
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-	process_input(delta)
-	process_movement(delta)
-	swing_axe()
+	if Inv.is_visible() == false:
+		process_input(delta)
+		process_movement(delta)
+		swing_axe()
+		item_pickup()
+		inventory_handler()
+	else:
+		inventory_handler()
+		if craftWaiter == 10:	
+			crafting_handler()
+			craftWaiter = 0
+		else:
+			craftWaiter += 1
 
 func process_input(delta):
 
@@ -102,6 +123,67 @@ func _input(event):
 		rotation_helper.rotation_degrees = camera_rot
 
 
+
+var woodCount = 0
+var stoneCount = 0
+var shroomOneCount = 0
+var shroomTwoCount = 0
+var grassCount = 0
+var leafCount = 0
+var pinetarCount = 0
+var fabricCount = 0
+
+func inventory_handler():
+	if Input.is_action_just_pressed("invOpen"):
+		if Inv.is_visible() == true:
+			Inv.hide()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Inv.show()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pass
+	var woodHolder = $Rotation_Helper/Camera/Inventory/woodHolder/woodLabel
+	woodHolder.text = String(woodCount)
+	var stoneHolder = $Rotation_Helper/Camera/Inventory/stoneHolder/stoneLabel
+	stoneHolder.text = String(stoneCount)
+	var grassHolder = $Rotation_Helper/Camera/Inventory/grassHolder/grassLabel
+	grassHolder.text = String(grassCount)
+	var fabricHolder = $Rotation_Helper/Camera/Inventory/CraftingMenu/fabricHolder/fabricLabel
+	fabricHolder.text = String(fabricCount)
+	pass
+
+
+
 func swing_axe():
 	if Input.is_action_pressed("attack"):
 		$AnimationPlayer.play("Axe_Swing")
+
+
+func item_pickup():
+	if interactionPoint.is_colliding():
+		UI_crosshair_off.hide()
+		UI_crosshair_on.show()
+	else:
+		UI_crosshair_off.show()
+		UI_crosshair_on.hide()
+	if interactionPoint.is_colliding() and Input.is_action_just_pressed("interact"):
+		var itemName = interactionPoint.get_collider().get_name()
+		if itemName == "wood":
+			woodCount += 1
+		elif itemName == "stone":
+			stoneCount += 1
+		elif itemName == "grass":
+			grassCount += round(rand_range(1,3))
+		else:
+			pass
+		current_item = interactionPoint.get_collider().get_parent().queue_free()
+		
+		
+		
+func crafting_handler():
+	if $Rotation_Helper/Camera/Inventory/CraftingMenu/fabricHolder/fabricCraft.is_pressed():
+		if grassCount >= 4:
+			fabricCount += 1
+			grassCount -= 4
+			print("crafted a fabric!")
+		

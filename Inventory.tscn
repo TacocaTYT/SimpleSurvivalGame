@@ -1,0 +1,164 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://textures/crosshair.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Franchise.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://textures/wood.png" type="Texture" id=3]
+[ext_resource path="res://textures/rocks.png" type="Texture" id=4]
+[ext_resource path="res://textures/tea-leaf.png" type="Texture" id=5]
+[ext_resource path="res://textures/weaving_pressed.png" type="Texture" id=6]
+[ext_resource path="res://textures/weaving.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 29
+font_data = ExtResource( 2 )
+
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="woodHolder" type="TextureRect" parent="."]
+anchor_left = 0.27
+anchor_top = 0.889
+anchor_right = 0.27
+anchor_bottom = 0.889
+margin_left = -29.3853
+margin_top = -28.7774
+margin_right = 28.6147
+margin_bottom = 29.2227
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="woodIcon" type="TextureRect" parent="woodHolder"]
+margin_left = 9.00113
+margin_top = 9.50169
+margin_right = 48.0011
+margin_bottom = 48.5017
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="woodLabel" type="RichTextLabel" parent="woodHolder"]
+margin_left = 42.6587
+margin_top = 41.9517
+margin_right = 105.659
+margin_bottom = 73.9517
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+
+[node name="stoneHolder" type="TextureRect" parent="."]
+anchor_left = 0.342
+anchor_top = 0.889
+anchor_right = 0.342
+anchor_bottom = 0.889
+margin_left = -29.1133
+margin_top = -28.7774
+margin_right = 28.8867
+margin_bottom = 29.2227
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stoneIcon" type="TextureRect" parent="stoneHolder"]
+margin_left = 9.00113
+margin_top = 7.50169
+margin_right = 48.0011
+margin_bottom = 46.5017
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stoneLabel" type="RichTextLabel" parent="stoneHolder"]
+margin_left = 42.6587
+margin_top = 41.9517
+margin_right = 105.659
+margin_bottom = 73.9517
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+
+[node name="grassHolder" type="TextureRect" parent="."]
+anchor_left = 0.413
+anchor_top = 0.889
+anchor_right = 0.413
+anchor_bottom = 0.889
+margin_left = -28.8173
+margin_top = -28.7774
+margin_right = 29.1827
+margin_bottom = 29.2227
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grassIcon" type="TextureRect" parent="grassHolder"]
+margin_left = 9.00113
+margin_top = 9.50169
+margin_right = 48.0011
+margin_bottom = 48.5017
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grassLabel" type="RichTextLabel" parent="grassHolder"]
+margin_left = 42.6587
+margin_top = 41.9517
+margin_right = 105.659
+margin_bottom = 73.9517
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+
+[node name="CraftingMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="fabricHolder" type="TextureRect" parent="CraftingMenu"]
+anchor_left = 2.843
+anchor_top = 1.242
+anchor_right = 2.843
+anchor_bottom = 1.242
+margin_left = -28.9885
+margin_top = -29.0101
+margin_right = 29.0115
+margin_bottom = 28.9899
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fabricCraft" type="TextureButton" parent="CraftingMenu/fabricHolder"]
+margin_left = 11.778
+margin_top = 12.6189
+margin_right = 44.778
+margin_bottom = 45.6189
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fabricLabel" type="RichTextLabel" parent="CraftingMenu/fabricHolder"]
+margin_left = 42.6587
+margin_top = 41.9517
+margin_right = 105.659
+margin_bottom = 73.9517
+custom_fonts/normal_font = SubResource( 1 )
+text = "o"
+__meta__ = {
+"_edit_use_anchors_": false
+}

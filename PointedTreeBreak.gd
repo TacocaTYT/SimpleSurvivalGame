@@ -21,7 +21,7 @@ func _on_Area_area_entered(area):
 		var dropCount = round(rand_range(1, 9))
 		while dropCount > 0:
 			var wood_pickup = WoodPickup.instance()
-			wood_pickup.transform.origin = transform.origin
+			wood_pickup.transform.origin = transform.origin + Vector3(0, .5, 0)
 			wood_pickup.set_linear_velocity(Vector3(rand_range(-5,5), rand_range(1,5), rand_range(-5,5)))
 			get_parent().add_child(wood_pickup)
 			dropCount -= 1
