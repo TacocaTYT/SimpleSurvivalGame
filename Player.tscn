@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://axe.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.241736, 0.214207, 0.204654 )
+
+[sub_resource type="CylinderShape" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Axe_Swing"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Rotation_Helper/AxeMover:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -87.393, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Rotation_Helper/AxeMover:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Rotation_Helper/AxeMover:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Rotation_Helper/Area:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Rotation_Helper/Area:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="Rotation_Helper" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Rotation_Helper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704454, -0.255379 )
+cull_mask = 1048573
+
+[node name="AxeMover" type="Spatial" parent="Rotation_Helper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113922, -0.753605, -0.822552 )
+
+[node name="axe" parent="Rotation_Helper/AxeMover" instance=ExtResource( 2 )]
+transform = Transform( -0.0198605, -0.19895, -0.00492833, -0.0513234, 0.000335024, 0.193302, -0.19228, 0.0204601, -0.0510873, 0.712164, 0.842715, -0.539214 )
+
+[node name="Area" type="Area" parent="Rotation_Helper"]
+transform = Transform( -0.363477, -3.64109, -0.0901957, -0.364587, 0.00237992, 1.37316, -0.961398, 0.102301, -0.255437, 0.122078, -0.789975, -2.31264 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Rotation_Helper/Area"]
+transform = Transform( 4.0496, -0.300692, -0.150937, -0.333433, 1.03368, -0.0158999, 1.17076, -0.14784, 2.25011, -0.248985, 0.0124727, 0.499869 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.6, 0, 0, 0, 1, -3.55271e-15, 0, 0, 0.6, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( 1, 0, 0, 0, -3.11823e-08, 0.713369, 0, -1, -4.37114e-08, 0, 0, 0 )
+layers = 2
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Axe_Swing = SubResource( 3 )
