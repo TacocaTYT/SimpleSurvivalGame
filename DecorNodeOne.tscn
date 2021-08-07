@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://RockOne.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GrassTuftLarge.tscn" type="PackedScene" id=2]
+[ext_resource path="res://redMushroom.tscn" type="PackedScene" id=3]
+
+[node name="DecorNodeOne" type="Spatial"]
+
+[node name="Rock" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.526217, -1.19209e-07, 0.143007 )
+
+[node name="Rock2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.534614, 0, 0.261176, 0, 0.595, 0, -0.261176, 0, 0.534614, 0.312289, 0.00706851, 0.00901604 )
+
+[node name="Rock3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.210333, 0, -0.27975, 0, 0.35, 0, 0.27975, 0, 0.210333, -0.30411, 1.19209e-07, 0.502112 )
+
+[node name="GrassTuftLarge" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.786415, 0, -0.146804, 0, 0.8, 0, 0.146804, 0, 0.786415, -0.478639, 2.98023e-08, -0.597587 )
+
+[node name="GrassTuftLarge2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.214146, 0.121537, -0.761164, 0.0957648, 0.779677, 0.151435, 0.764834, -0.131652, 0.194158, 0.59013, 2.98023e-08, -0.684417 )
+
+[node name="GrassTuftLarge3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.371355, 0, -0.533475, 0, 0.65, 0, 0.533475, 0, 0.371355, 0.193577, 2.98023e-08, 0.437647 )
+
+[node name="GrassTuftLarge4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.11691, -0.041016, -0.157002, -0.000501674, 0.193413, -0.0509019, 0.16227, 0.0301486, 0.112957, -0.578299, -0.0184784, 0.441382 )
+
+[node name="redMushroom" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.776717, -0.1916, 0, 0.187561, 0.760345, -0.163392, 0.0391323, 0.158637, 0.783137, -0.554818, 0.00880337, 0.408967 )
+
+[node name="redMushroom2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.519318, 0.0730555, 0.604129, 0.217265, 0.719609, -0.273785, -0.568423, 0.341797, 0.447292, 0.622805, -0.00339774, 0.0949238 )
+
+[node name="redMushroom3" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.148313, 0.266828, 0.739463, 0.294829, 0.716462, -0.199395, -0.728752, 0.235553, -0.231162, 0.688759, 0.00845541, 0.021192 )
+
+[node name="GrassTuftLarge5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0918791, 0.030808, 0.0833092, 0.0140607, 0.0922368, -0.0379863, -0.177089, 0.0233077, 0.0402072, 0.672265, -0.0174414, 0.070306 )

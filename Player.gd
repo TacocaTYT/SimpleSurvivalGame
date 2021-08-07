@@ -126,12 +126,13 @@ func _input(event):
 
 var woodCount = 0
 var stoneCount = 0
-var shroomOneCount = 0
-var shroomTwoCount = 0
+var shroomCount = 0
+var redShroomCount = 0
 var grassCount = 0
 var leafCount = 0
 var pinetarCount = 0
 var fabricCount = 0
+var lumberCount = 0
 
 func inventory_handler():
 	if Input.is_action_just_pressed("invOpen"):
@@ -150,6 +151,10 @@ func inventory_handler():
 	grassHolder.text = String(grassCount)
 	var fabricHolder = $Rotation_Helper/Camera/Inventory/CraftingMenu/fabricHolder/fabricLabel
 	fabricHolder.text = String(fabricCount)
+	var lumberHolder = $Rotation_Helper/Camera/Inventory/CraftingMenu/lumberHolder/lumberLabel
+	lumberHolder.text = String(lumberCount)
+	var redShroomHolder = $Rotation_Helper/Camera/Inventory/redShroomHolder/redShroomLabel
+	redShroomHolder.text = String(redShroomCount)
 	pass
 
 
@@ -174,6 +179,8 @@ func item_pickup():
 			stoneCount += 1
 		elif itemName == "grass":
 			grassCount += round(rand_range(1,3))
+		elif itemName == "redShroom":
+			redShroomCount += 1
 		else:
 			pass
 		current_item = interactionPoint.get_collider().get_parent().queue_free()
@@ -186,4 +193,9 @@ func crafting_handler():
 			fabricCount += 1
 			grassCount -= 4
 			print("crafted a fabric!")
+	if $Rotation_Helper/Camera/Inventory/CraftingMenu/lumberHolder/lumberCraft.is_pressed():
+		if woodCount >= 3:
+			lumberCount += 1
+			woodCount -=3
+			print("crafted a lumber!")
 		

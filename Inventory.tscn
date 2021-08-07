@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://textures/crosshair.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Franchise.ttf" type="DynamicFontData" id=2]
@@ -7,14 +7,28 @@
 [ext_resource path="res://textures/tea-leaf.png" type="Texture" id=5]
 [ext_resource path="res://textures/weaving_pressed.png" type="Texture" id=6]
 [ext_resource path="res://textures/weaving.png" type="Texture" id=7]
+[ext_resource path="res://fabricCraft.gd" type="Script" id=8]
+[ext_resource path="res://textures/mushroom red.png" type="Texture" id=9]
+[ext_resource path="res://textures/mushroom.png" type="Texture" id=10]
+[ext_resource path="res://lumberCraft.gd" type="Script" id=11]
+[ext_resource path="res://textures/lumber.png" type="Texture" id=12]
+[ext_resource path="res://textures/lumber_pressed.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 29
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.0408936
+margin_top = -0.420448
+margin_right = -0.0408936
+margin_bottom = -0.420471
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -121,6 +135,74 @@ margin_bottom = 73.9517
 custom_fonts/normal_font = SubResource( 1 )
 text = "0"
 
+[node name="redShroomHolder" type="TextureRect" parent="."]
+anchor_left = 0.483
+anchor_top = 0.889
+anchor_right = 0.483
+anchor_bottom = 0.889
+margin_left = -28.4973
+margin_top = -28.7774
+margin_right = 29.5027
+margin_bottom = 29.2227
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="redShroomIcom" type="TextureRect" parent="redShroomHolder"]
+margin_left = 9.00113
+margin_top = 9.50169
+margin_right = 48.0011
+margin_bottom = 48.5017
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="redShroomLabel" type="RichTextLabel" parent="redShroomHolder"]
+margin_left = 42.6587
+margin_top = 41.9517
+margin_right = 105.659
+margin_bottom = 73.9517
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+
+[node name="brownShroomHolder" type="TextureRect" parent="."]
+anchor_left = 0.552
+anchor_top = 0.889
+anchor_right = 0.552
+anchor_bottom = 0.889
+margin_left = -29.1533
+margin_top = -28.7774
+margin_right = 28.8467
+margin_bottom = 29.2227
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brownShroomIcom" type="TextureRect" parent="brownShroomHolder"]
+margin_left = 9.00113
+margin_top = 9.50169
+margin_right = 48.0011
+margin_bottom = 48.5017
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="brownShroomLabel" type="RichTextLabel" parent="brownShroomHolder"]
+margin_left = 42.6587
+margin_top = 41.9517
+margin_right = 105.659
+margin_bottom = 73.9517
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+
 [node name="CraftingMenu" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -130,10 +212,10 @@ anchor_left = 2.843
 anchor_top = 1.242
 anchor_right = 2.843
 anchor_bottom = 1.242
-margin_left = -28.9885
-margin_top = -29.0101
-margin_right = 29.0115
-margin_bottom = 28.9899
+margin_left = -28.72
+margin_top = -28.68
+margin_right = 49.28
+margin_bottom = 49.32
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -141,24 +223,172 @@ __meta__ = {
 }
 
 [node name="fabricCraft" type="TextureButton" parent="CraftingMenu/fabricHolder"]
-margin_left = 11.778
-margin_top = 12.6189
-margin_right = 44.778
-margin_bottom = 45.6189
+anchor_left = 0.476
+anchor_top = 0.5
+anchor_right = 0.476
+anchor_bottom = 0.5
+margin_left = -23.2551
+margin_top = -24.5017
+margin_right = 24.7449
+margin_bottom = 23.4983
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 6 )
+expand = true
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grassNeeded" type="TextureRect" parent="CraftingMenu/fabricHolder/fabricCraft"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.6017
+margin_top = 50.3818
+margin_right = 26.3983
+margin_bottom = 98.3818
+texture = ExtResource( 1 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="grassIcon" type="TextureRect" parent="CraftingMenu/fabricHolder/fabricCraft/grassNeeded"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.664
+margin_top = -15.336
+margin_right = 15.336
+margin_bottom = 15.664
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grassNeededLabel" type="RichTextLabel" parent="CraftingMenu/fabricHolder/fabricCraft/grassNeeded"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 17.1697
+margin_top = -8.16742
+margin_right = 51.1697
+margin_bottom = 12.8326
+custom_fonts/normal_font = SubResource( 2 )
+text = "4"
+
 [node name="fabricLabel" type="RichTextLabel" parent="CraftingMenu/fabricHolder"]
-margin_left = 42.6587
-margin_top = 41.9517
-margin_right = 105.659
-margin_bottom = 73.9517
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 22.013
+margin_top = 5.94828
+margin_right = 85.013
+margin_bottom = 37.9483
 custom_fonts/normal_font = SubResource( 1 )
 text = "o"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="lumberHolder" type="TextureRect" parent="CraftingMenu"]
+anchor_left = 5.475
+anchor_top = 1.5
+anchor_right = 5.475
+anchor_bottom = 1.5
+margin_left = -39.0
+margin_top = -39.0
+margin_right = 39.0
+margin_bottom = 39.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lumberCraft" type="TextureButton" parent="CraftingMenu/lumberHolder"]
+anchor_left = 0.476
+anchor_top = 0.5
+anchor_right = 0.476
+anchor_bottom = 0.5
+margin_left = -23.2551
+margin_top = -24.5017
+margin_right = 24.7449
+margin_bottom = 23.4983
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+expand = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="woodNeeded" type="TextureRect" parent="CraftingMenu/lumberHolder/lumberCraft"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.6017
+margin_top = 50.3818
+margin_right = 26.3983
+margin_bottom = 98.3818
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="woodIcon" type="TextureRect" parent="CraftingMenu/lumberHolder/lumberCraft/woodNeeded"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.664
+margin_top = -15.336
+margin_right = 15.336
+margin_bottom = 15.664
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="woodNeededLabel" type="RichTextLabel" parent="CraftingMenu/lumberHolder/lumberCraft/woodNeeded"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 17.1697
+margin_top = -8.16742
+margin_right = 51.1697
+margin_bottom = 12.8326
+custom_fonts/normal_font = SubResource( 2 )
+text = "3"
+
+[node name="lumberLabel" type="RichTextLabel" parent="CraftingMenu/lumberHolder"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 22.013
+margin_top = 5.94828
+margin_right = 85.013
+margin_bottom = 37.9483
+custom_fonts/normal_font = SubResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="CraftingMenu/fabricHolder/fabricCraft" to="CraftingMenu/fabricHolder/fabricCraft" method="_on_fabricCraft_mouse_entered"]
+[connection signal="mouse_exited" from="CraftingMenu/fabricHolder/fabricCraft" to="CraftingMenu/fabricHolder/fabricCraft" method="_on_fabricCraft_mouse_exited"]
+[connection signal="mouse_entered" from="CraftingMenu/lumberHolder/lumberCraft" to="CraftingMenu/lumberHolder/lumberCraft" method="_on_lumberCraft_mouse_entered"]
+[connection signal="mouse_exited" from="CraftingMenu/lumberHolder/lumberCraft" to="CraftingMenu/lumberHolder/lumberCraft" method="_on_lumberCraft_mouse_exited"]
