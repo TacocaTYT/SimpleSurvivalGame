@@ -18,12 +18,18 @@ var current_item
 var UI_crosshair_off
 var UI_crosshair_on
 var Inv
+var UIplaceholder
+var allowProcesses
+var placeRay
+var buildMode
+var playerUI
 
 var craftWaiter = 0
 
 var MOUSE_SENSITIVITY = 0.1
 
 func _ready():
+	#UIplaceholder = Inv
 	camera = $Rotation_Helper/Camera
 	rotation_helper = $Rotation_Helper
 	#anim = $AnimationPlayer
@@ -31,23 +37,23 @@ func _ready():
 	UI_crosshair_off = $Rotation_Helper/Camera/UI/CrosshairOff
 	UI_crosshair_on = $Rotation_Helper/Camera/UI/CrosshairOn
 	Inv = $Rotation_Helper/Camera/Inventory
+	UIplaceholder = Inv
+	placeRay = $Rotation_Helper/Camera/PlacementRayCast
+	playerUI = $Rotation_Helper/Camera/UI
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-	if Inv.is_visible() == false:
-		process_input(delta)
-		process_movement(delta)
-		swing_axe()
-		item_pickup()
-		inventory_handler()
+	process_input(delta)
+	process_movement(delta)
+	swing_axe()
+	item_pickup()
+	inventory_handler()
+	if craftWaiter == 10:
+		crafting_handler()
+		craftWaiter = 0
 	else:
-		inventory_handler()
-		if craftWaiter == 10:	
-			crafting_handler()
-			craftWaiter = 0
-		else:
-			craftWaiter += 1
+		craftWaiter += 1
 
 func process_input(delta):
 
@@ -83,11 +89,11 @@ func process_input(delta):
 
 	# ----------------------------------
 	# Capturing/Freeing the cursor
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#if Input.is_action_just_pressed("ui_cancel"):
+	#	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+	#		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#	else:
+	#		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# ----------------------------------
 
 func process_movement(delta):
@@ -136,7 +142,11 @@ var lumberCount = 0
 
 func inventory_handler():
 	if Input.is_action_just_pressed("invOpen"):
-		if Inv.is_visible() == true:
+		if Inv.is_visible() or UIplaceholder.is_visible():
+			playerUI.show()
+		else:
+			playerUI.hide()
+		if Inv.is_visible() == true or UIplaceholder.is_visible() == true:
 			Inv.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
@@ -155,6 +165,8 @@ func inventory_handler():
 	lumberHolder.text = String(lumberCount)
 	var redShroomHolder = $Rotation_Helper/Camera/Inventory/redShroomHolder/redShroomLabel
 	redShroomHolder.text = String(redShroomCount)
+	var shroomHolder = $Rotation_Helper/Camera/Inventory/brownShroomHolder/brownShroomLabel
+	shroomHolder.text = String(shroomCount)
 	pass
 
 
@@ -173,17 +185,30 @@ func item_pickup():
 		UI_crosshair_on.hide()
 	if interactionPoint.is_colliding() and Input.is_action_just_pressed("interact"):
 		var itemName = interactionPoint.get_collider().get_name()
+		current_item = interactionPoint.get_collider().get_parent()
 		if itemName == "wood":
 			woodCount += 1
+			current_item.queue_free()
 		elif itemName == "stone":
 			stoneCount += 1
+			current_item.queue_free()
 		elif itemName == "grass":
 			grassCount += round(rand_range(1,3))
+			current_item.queue_free()
 		elif itemName == "redShroom":
 			redShroomCount += 1
+			current_item.queue_free()
+		elif itemName == "shroom":
+			shroomCount += 1
+			current_item.queue_free()
+		elif itemName == "planter":
+			UIplaceholder = interactionPoint.get_collider().get_node("../UI")
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			UIplaceholder.show()
+			playerUI.hide()
 		else:
 			pass
-		current_item = interactionPoint.get_collider().get_parent().queue_free()
+		
 		
 		
 		
@@ -198,4 +223,12 @@ func crafting_handler():
 			lumberCount += 1
 			woodCount -=3
 			print("crafted a lumber!")
-		
+
+func placement_handler():
+	if buildMode:
+		if Input.is_action_just_pressed("hotbarOne"):
+			pass
+		if Input.is_action_just_pressed("hotbarTwo"):
+			pass
+		if placeRay.is_colliding():
+			pass

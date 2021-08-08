@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://textures/crosshair.png" type="Texture" id=1]
+[ext_resource path="res://textures/grungeHex.png" type="Texture" id=2]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -38,6 +39,133 @@ margin_bottom = 11.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hotbar" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar1" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.211
+anchor_top = 0.99
+anchor_right = 0.211
+anchor_bottom = 0.99
+margin_left = -31.064
+margin_top = -62.0001
+margin_right = 30.936
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar2" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.297
+anchor_top = 0.99
+anchor_right = 0.297
+anchor_bottom = 0.99
+margin_left = -31.128
+margin_top = -62.0001
+margin_right = 30.872
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar3" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.383
+anchor_top = 0.99
+anchor_right = 0.383
+anchor_bottom = 0.99
+margin_left = -31.192
+margin_top = -62.0001
+margin_right = 30.808
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar4" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.469
+anchor_top = 0.99
+anchor_right = 0.469
+anchor_bottom = 0.99
+margin_left = -31.256
+margin_top = -62.0001
+margin_right = 30.744
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar5" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.555
+anchor_top = 0.99
+anchor_right = 0.555
+anchor_bottom = 0.99
+margin_left = -31.32
+margin_top = -62.0001
+margin_right = 30.68
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar6" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.641
+anchor_top = 0.99
+anchor_right = 0.641
+anchor_bottom = 0.99
+margin_left = -31.384
+margin_top = -62.0001
+margin_right = 30.616
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar7" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.727
+anchor_top = 0.99
+anchor_right = 0.727
+anchor_bottom = 0.99
+margin_left = -31.4481
+margin_top = -62.0001
+margin_right = 30.5519
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hotbar8" type="TextureRect" parent="Hotbar"]
+anchor_left = 0.812
+anchor_top = 0.99
+anchor_right = 0.812
+anchor_bottom = 0.99
+margin_left = -30.488
+margin_top = -62.0001
+margin_right = 31.512
+margin_bottom = -6.10352e-05
+texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

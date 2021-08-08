@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://RockOne.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GrassTuftLarge.tscn" type="PackedScene" id=2]
 [ext_resource path="res://redMushroom.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shroom.tscn" type="PackedScene" id=4]
 
 [node name="DecorNodeOne" type="Spatial"]
 
@@ -38,3 +39,12 @@ transform = Transform( -0.148313, 0.266828, 0.739463, 0.294829, 0.716462, -0.199
 
 [node name="GrassTuftLarge5" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.0918791, 0.030808, 0.0833092, 0.0140607, 0.0922368, -0.0379863, -0.177089, 0.0233077, 0.0402072, 0.672265, -0.0174414, 0.070306 )
+
+[node name="Shroom" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.910532, -0.413438, 0, 0.413438, 0.910532, 0, 1.22976, -0.0985552 )
+
+[node name="Shroom2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.98555, 0.161946, -0.0496418, -0.169384, 0.942275, -0.288838, 0, 0.293073, 0.95609, 0.0953273, 1.24432, -0.143469 )
+
+[node name="Shroom3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.41768, -0.0386485, 0.907772, -0.15554, 0.981305, 0.113345, -0.895182, -0.188537, 0.40386, 0.0136875, 1.26129, -0.165871 )

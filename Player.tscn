@@ -90,6 +90,13 @@ collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="PlacementRayCast" type="RayCast" parent="Rotation_Helper/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -5 )
+collision_mask = 33
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="UI" parent="Rotation_Helper/Camera" instance=ExtResource( 3 )]
 
 [node name="Inventory" parent="Rotation_Helper/Camera" instance=ExtResource( 4 )]
